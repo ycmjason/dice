@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <button onclick="roll()">roll</button>
+    <div id="dice0">
+    </div>
+    <div id="dice1">
+    </div>
+    <div id="dice2">
+    </div>
+    <div id="dice3">
+    </div>
+    <div id="dice4">
+    </div>
+    <script>
+      function roll(){
+        for(var i = 0; i < 5; i++){
+          document.getElementById("dice" + i).innerHTML = Math.floor(Math.random() * 6) + 1
+        }
+      }
+    </script>
+  </body>
+</html>
