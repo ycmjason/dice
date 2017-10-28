@@ -2,53 +2,7 @@
   <head>
     <title>Dice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <style>
-      /* reset css */
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header, hgroup,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-        box-sizing: border-box;
-      }
-      /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure,
-      footer, header, hgroup, menu, nav, section {
-        display: block;
-      }
-      body {
-        line-height: 1;
-      }
-      ol, ul {
-        list-style: none;
-      }
-      blockquote, q {
-        quotes: none;
-      }
-      blockquote:before, blockquote:after,
-      q:before, q:after {
-        content: '';
-        content: none;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="reset.css">
     <style>
       .popup{
         color: white;
@@ -88,7 +42,7 @@
     <button onclick="roll()" class="popup">roll</button>
     <script>
 function createDiceDiv(){
-  const div = document.createElement('div');
+  var div = document.createElement('div');
   div.classList.add('dice');
   return div;
 }
@@ -96,20 +50,17 @@ function rollDice(){
   return Math.floor(Math.random() * 6) + 1;
 }
 function roll(){
-  dices = document.getElementsByClassName('dice');
+  var dices = document.getElementsByClassName('dice');
   [].forEach.call(dices, (d) => d.innerHTML = rollDice());
 }
 
-function init(){
-  const diceDivs = (new Array(5)).fill(0).map(createDiceDiv)
-  diceDivs.forEach(d => {
-    d.classList.add('popup');
-    document.body.insertBefore(d, document.querySelector('button'));
-  });
-  roll();
+for(var i = 0; i < 5; i++){
+  var rollButton = document.querySelector('button');
+  var diceDiv = createDiceDiv();
+  diceDiv.classList.add('popup');
+  document.body.insertBefore(diceDiv, rollButton);
 }
-
-init();
+roll();
     </script>
   </body>
 </html>
